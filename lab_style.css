@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 body{
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -12,21 +11,26 @@ body{
     background-color: #0056ff;
     height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 10% auto 10%;
     overflow-x: hidden;
 }
 
-.header {
-    display: flex;
+.header{
+    grid-row: 1;
+    display: grid;
     width: 100%;
-    height: auto;
-    flex-shrink: 0;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1% 18%;
     background-color: #ffffff;
     color: black;
+    grid-template-columns: 20% auto 20%;
+}
+
+.header-content{
+    grid-column: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -40,13 +44,28 @@ body{
     cursor: pointer;
 }
 
-.hero {
+.main{
+    display: grid;
+    grid-row: 2;
+    grid-template-columns: 20% auto 20%;
+    height: auto;
+}
+
+.main-content{
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: 30% auto;
+    height: auto;
+}
+
+.hero{
+    grid-row: 1;
     text-align: left;
-    padding: 2% 18% 0 18%;
     width: 100%;
 }
 
 .hero-title {
+    margin-top: 5%;
     letter-spacing: 0.8rem;
     font-size: 1rem;
     text-transform: uppercase;
@@ -63,20 +82,14 @@ body{
     font-size: 3rem;
 }
 
-.main-content{
-    flex: 1;
-    width: 100%;
-    min-height: 70vh;
-}
-
 .laptop-image{
-    width: 30%;
+    width: 40%;
     height: auto;
     position: absolute;
-    top: -30%; 
-    left: 48%; 
+    top: 10%; 
+    left: 50%; 
     z-index: 2; 
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(20deg) scale(1);
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(25deg) scale(1);
     transform-origin: center center; 
 }
 
@@ -86,10 +99,11 @@ body{
 }
 
 .features {
+    grid-row: 2;
+    margin-top: 2%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0 18% 0rem 16%;
     width: 100%;
     gap: 2%;
     position: relative;
@@ -100,7 +114,7 @@ body{
     padding: 1.5rem;
     text-align: center;
     width: 25%;
-    height: 18%;
+    height: min-content;
 }
 
 .feature-item h3 {
@@ -127,10 +141,11 @@ body{
 }
 
 .footer {
+    grid-row: 3;
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 15%;
+    height: min-content;
     padding: 2%;
     background-color: #222;
     color: #aaa;
@@ -144,271 +159,90 @@ body{
 }
 
 @media (min-width: 2500px){
-    .header {
-        height: 8%;
-        padding: 1rem 30rem 1rem 30rem;
+    .logo, .menu-icon{
+        font-size: 3rem;
     }
-    
-    .hero {
-        padding: 2rem 30rem 0 30rem;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        height: 40%;
-    }
-    
-    .hero-title {
-        letter-spacing: 0.9rem;
+
+    .hero-title{
         font-size: 2rem;
-        margin-bottom: 0.5rem;
-        color: #ccccff;
-        font-weight: lighter;
     }
-    
-    .hero-heading {
-        width: 50%;
-        font-size: 4rem;
-        font-weight: bold;
-        margin-bottom: 2rem;
+
+    .hero-heading{
+        font-size: 5rem;
     }
-    
-    .main-content{
-        flex: 1;
-    }
-    
-    .laptop-image{
-        width: 20%;
-        height: auto;
-        position: absolute;
-        top: -10%; 
-        left: 42%; 
-        z-index: 2; 
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(20deg) scale(1);
-        transform-origin: center center; 
-    }
-    
-    .features {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 0 30rem 0rem 30rem;
-        width: 100%;
-        gap: 2rem;
-        position: relative;
-    }
-    
-    .feature-item {
-        padding: 3rem;
-        width: 18%;
-        height: auto;
-    }
-    
-    .feature-item h3 {
-        color: #ffa500;
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .feature-item p {
-        font-size: 1rem;
-        color: #ccccff;
-    }
-    
-    .more-link {
-        color: #ffa500;
-        font-size: 1rem;
-        margin-bottom: 1rem;
-    }
-    
+
     .icon img {
         width: 60px;
         height: 60px;
     }
-    
-    .footer {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100px;
-        padding: 2rem;
-        background-color: #222;
-        color: #aaa;
-        margin-top: auto;
-        flex-shrink: 0;
-    }
-    
-    .footer p{
-        width: 450px;
-        text-align: center;
-    }
-} 
 
-/* @media (min-width: 801px) and (max-width: 1500px) {
-    .header {
-        padding: 1% 15%;
-    }
-    
-    .hero {
-        padding: 2% 15% 0 15%;
-    }
-/* 
-    .main-content {
-        max-height: 800px;
-    }     
-    
-    .laptop-image{
-        top: -3%; 
-        left: 50%; 
-        width: 30%;
-        z-index: 2; 
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(20deg) scale(1);
-        transform-origin: center center; 
-    }
-    
-    .features {
-        padding: 0 15% 0rem 15%;
-        width: 100%;
-        gap: 2%;
-        position: relative;
-        flex-grow: 1;
-    }
-    
-    .feature-item {
-        padding: 2%;
-        text-align: center;
-        width: 100%;
-        max-width: 25%;
-        height: 300px;
-    }
-    
-    .feature-item h3 {
-        color: #ffa500;
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .feature-item p {
-        font-size: 0.9rem;
-        color: #ccccff;
-    }
-    
-    .more-link {
-        color: #ffa500;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-    }
-    
-    .icon img {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100px;
-        padding: 1rem;
-        background-color: #222;
-        color: #aaa;
-        flex-shrink: 0; 
-    }
-    
-    .footer p{
-        width: 450px;
-        text-align: center;
-    }
-} */
-
-@media screen and (max-width: 900px) {
-    * {
-        box-sizing: border-box;
-        /* overflow-x: hidden; */
+    .feature-item h3{
+        font-size: 2.4rem;
     }
 
-    body {
-        margin: 0;
-        box-sizing: border-box;
-        display: block;
-        /* overflow-x: hidden;  */
+    .feature-item p, .more-link {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 800px){
+    body{
+        max-width: 100vw;
+    }
+
+    .main{
+        height: 100%;
     }
 
     .main-content{
-        display: flex;
-        flex-direction: column;
-        max-height: none;
-        overflow: auto;
-        flex: 1;
+        grid-row: 2;
+        grid-template-rows: 23% auto;
+        height: 100%;
     }
 
-    .header {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1.5%;
-    }
-
-    .hero {
-        padding: 8% 1% 0 1%;
+    .hero{
+        grid-row: 1;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-title {
-        font-size: 0.8rem;
-        margin-bottom: 0.5%;
-    }
-
-    .hero-heading {
+        margin-top: 5%;
+        margin-bottom: 0;
         text-align: center;
-        width: 70%;
-        font-size: 1.5rem;
-        margin-bottom: 1%;
-    }
-/* 
-    .laptop-image{
-        margin-bottom: 2rem;
-        overflow: hidden;
-    } */
-
-    .laptop-image{
-        position: static;
-        width: 60%;
-        margin-bottom: 2%;
-        transform: rotateZ(20deg);
-        height: 200px;
     }
 
-    .features {
+    .hero-title{
+        font-size: 0.8rem;
+    }
+    
+    .hero-heading{
+        width: 100%;
+        font-size: 2rem;
+    }
+
+    .features{
+        margin-top: 10%;
         flex-direction: column;
-        align-items: center;
-        padding: 0 1rem 1rem 1rem;
-        gap: 2px;
-        max-height: none;
+        grid-row: 2;
     }
 
-    .feature-item {
-        width: 70%;
-        padding: 1%;
+    .laptop-image{
+        width: 90%;
         height: auto;
-        margin-bottom: 1rem;
+        position: static;
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(25deg) scale(1);
+        transform-origin: center center; 
+    }
+
+    .feature-item{
+        width: 100%;
     }
 
     .footer{
-        position: static;
-        width: 100%;
-        height: 120px;
-        display: flex;
-        align-items: center;
+        margin-top: 10%;
+        padding: 5%;
+        margin-bottom: 0;
     }
 
-    .footer p {
-        width: 330px;
-        height: 50px;
+    .footer p{
+        width: 72vw;
         font-size: 0.8rem;
-        padding: 0 1rem;
     }
 }
